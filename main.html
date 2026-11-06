@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Barangay Information Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f4f4;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #245b91;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Barangay Information Portal</h2>
+    <p>Submit a non-emergency inquiry.</p>
+
+    <form id="requestForm">
+
+        <label>Request Category</label>
+        <select id="category" required>
+            <option value="">Select a category</option>
+            <option>Service Inquiry</option>
+            <option>Document Requirements</option>
+            <option>Community Concern</option>
+        </select>
+
+        <label>Request Details</label>
+        <textarea id="details" required></textarea>
+
+        <button type="submit">Submit Request</button>
+
+    </form>
+
+    <p id="message"></p>
+</div>
+
+<script>
+    document.getElementById("requestForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const category =
+            document.getElementById("category").value;
+
+        const details =
+            document.getElementById("details").value.trim();
+
+        if (!category || !details) {
+            document.getElementById("message").textContent =
+                "Please complete all fields.";
+            return;
+        }
+
+        document.getElementById("message").textContent =
+            "Your sample request has been received!";
+
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
